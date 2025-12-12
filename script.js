@@ -50,18 +50,25 @@ document.getElementById('ohm-calc-p').addEventListener('click', () => {
 
 // -------------------- CALCULADORA DE COLORES --------------------
 function drawResistorFromSelects() {
-  const c1sel = document.getElementById('col-b1');
-  const c2sel = document.getElementById('col-b2');
-  const c3sel = document.getElementById('col-b3');
-  const c4sel = document.getElementById('col-b4');
-
-  const c1 = c1sel.options[c1sel.selectedIndex]?.getAttribute('data-color') || 'transparent';
-  const c2 = c2sel.options[c2sel.selectedIndex]?.getAttribute('data-color') || 'transparent';
-  const c3 = c3sel.options[c3sel.selectedIndex]?.getAttribute('data-color') || 'transparent';
-  const c4 = c4sel.options[c4sel.selectedIndex]?.getAttribute('data-color') || 'transparent';
-
   const canvas = document.getElementById('col-canvas');
+  const parentWidth = canvas.parentElement.offsetWidth;
+
+  // Tamaño base 480x90 → escalamos
+  const scale = parentWidth / 480;
+
+  canvas.width = 480 * scale;
+  canvas.height = 90 * scale;
+
   const ctx = canvas.getContext('2d');
+  ctx.scale(scale, scale);
+
+  // Leer colores como siempre
+  const getColor = sel => sel.options[sel.selectedIndex]?.getAttribute('data-color') || 'transparent';
+
+  const c1 = getColor(document.getElementById('col-b1'));
+  const c2 = getColor(document.getElementById('col-b2'));
+  const c3 = getColor(document.getElementById('col-b3'));
+  const c4 = getColor(document.getElementById('col-b4'));
   ctx.clearRect(0,0,canvas.width,canvas.height);
 
   ctx.fillStyle = '#deb887';
@@ -158,3 +165,4 @@ document.getElementById('sd-y2d').addEventListener('click', () => {
   outRbc.textContent = fmt(M / Ra, 'Ω');
   outRac.textContent = fmt(M / Rb, 'Ω'); // ← AC en lugar de CA
 });
+
