@@ -1,0 +1,192 @@
+/* --------------------------------------------------
+   ESTILOS GENERALES
+--------------------------------------------------*/
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: linear-gradient(135deg, #e5eef9, #eef2f7);
+    margin: 0;
+    padding: 40px 0;
+    text-align: center;
+    color: #333;
+}
+
+h1, h2 {
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: #2b3a55;
+}
+
+p {
+    margin-top: 0;
+}
+
+/* Contenedor principal */
+.main-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* Tarjetas de cada calculadora */
+.card {
+    background: #ffffff;
+    padding: 25px;
+    margin: 25px auto;
+    border-radius: 16px;
+    max-width: 700px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+    transition: transform .2s;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+}
+
+/* --------------------------------------------------
+   ESTILOS GENERALES PARA INPUTS Y BOTONES
+--------------------------------------------------*/
+input[type="number"],
+select {
+    width: 90%;
+    padding: 10px;
+    margin-top: 8px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+}
+
+button {
+    background: #3b82f6;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background .2s, transform .2s;
+}
+
+button:hover {
+    background: #2563eb;
+    transform: scale(1.03);
+}
+
+.result-box {
+    padding: 14px;
+    background: #f0f5ff;
+    border-radius: 10px;
+    margin-top: 10px;
+    font-weight: bold;
+    font-size: 18px;
+    border-left: 5px solid #3b82f6;
+    text-align: center;
+}
+
+/* --------------------------------------------------
+   CÓDIGO DE COLORES – CANVAS
+--------------------------------------------------*/
+#col-canvas {
+    margin-top: 20px;
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+/* --------------------------------------------------
+   SECCIÓN ESTRELLA – DELTA
+--------------------------------------------------*/
+.sd-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    max-width: 800px;
+    margin: auto;
+}
+
+@media (max-width: 800px) {
+    .sd-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+.sd-box {
+    padding: 20px;
+    background: #fafbff;
+    border-radius: 14px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+/* Imagen de esquemas */
+.scheme-img {
+    width: 200px;
+    margin: 15px auto;
+    display: block;
+}
+
+/* Títulos internos */
+.sd-title {
+    font-size: 20px;
+    margin-bottom: 12px;
+    font-weight: bold;
+}
+
+/* Etiquetas */
+label {
+    font-size: 15px;
+    font-weight: 600;
+    display: block;
+    text-align: left;
+    width: 90%;
+    margin: auto;
+    color: #333;
+    margin-top: 10px;
+}
+
+/* Contenedor de imagen */
+.sd-img-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 35px;
+}
+
+.sd-img-card {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+    margin-top: 10px;
+}
+
+.sd-img {
+    width: 260px;
+    max-width: 90%;
+}
+
+/* --------------------------------------------------
+   REPARACIÓN ESPECÍFICA QUE PEDISTE
+--------------------------------------------------*/
+
+/* Mantener texto visible en banda 3 (color, NO multiplicador)  
+   — NO se cambia nada más del HTML ni del diseño */
+#col-b3 option {
+    font-weight: bold;
+}
+.sd-img-box {
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.sd-img {
+    width: 400px;
+    max-width: 90%;
+    display: block;
+}
+

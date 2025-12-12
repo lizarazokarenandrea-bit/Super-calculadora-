@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Herramientas Eléctricas — Ley de Ohm · Colores · Δ↔Y</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+<header class="site-header">
+    <h1>Herramientas Eléctricas</h1>
+    <p class="subtitle">Ley de Ohm · Código de colores · Transformación Estrella/Delta</p>
+</header>
+
+<main class="grid">
+
+    <!-- ===================================================== -->
+    <!-- ===================== TEORÍA ========================= -->
+    <!-- ===================================================== -->
+    <section class="card theory">
+    <h2>Conceptos Básicos</h2>
+
+<h3>¿Qué es la Ley de Ohm?</h3>
+<p>
+La Ley de Ohm describe la relación entre voltaje (V), corriente (I) y resistencia (R). 
+Su ecuación fundamental es <strong>V = I × R</strong>.  
+A partir de ella pueden despejarse:
+</p>
+<ul>
+    <li><strong>I = V / R</strong></li>
+    <li><strong>R = V / I</strong></li>
+</ul>
+<p>
+Esta ley permite analizar cualquier circuito eléctrico básico y determinar cómo se comporta un componente cuando se conoce
+su voltaje o corriente.
+</p>
+
+<h3>¿Qué es una resistencia?</h3>
+<p>
+Una resistencia es un componente que se opone al paso de la corriente eléctrica. 
+Su función es controlar, limitar o distribuir la corriente dentro de un circuito. 
+Su valor se mide en <strong>ohmios (Ω)</strong>.
+</p>
+
+<h3>¿Qué es el código de colores?</h3>
+<p>
+Los resistores usan bandas de colores para indicar su valor en ohmios y su tolerancia. 
+Las primeras dos bandas representan los dígitos significativos, la tercera es el multiplicador y la cuarta indica la tolerancia.
+Esta codificación permite identificar resistencias sin necesidad de instrumentos de medición.
+</p>
+
+<h3>¿Qué es la transformación Estrella ↔ Delta?</h3>
+<p>
+Las configuraciones <strong>Delta (Δ)</strong> y <strong>Estrella (Y)</strong> son dos formas equivalentes de conectar tres resistencias.
+Permiten simplificar redes que no pueden resolverse únicamente con combinaciones en serie o paralelo.
+</p>
+
+<h4>Red Delta (Δ)</h4>
+<p>
+Está formada por tres resistencias conectadas entre los nodos A, B y C: 
+<strong>R<sub>AB</sub></strong>, <strong>R<sub>BC</sub></strong> y <strong>R<sub>AC</sub></strong>.
+</p>
+
+<h4>Red Estrella (Y)</h4>
+<p>
+Conecta tres resistencias desde los nodos A, B y C hacia un punto común. 
+Sus resistencias son: <strong>R<sub>A</sub></strong>, <strong>R<sub>B</sub></strong> y <strong>R<sub>C</sub></strong>.
+</p>
+
+<h4>¿Para qué sirve la transformación?</h4>
+<p>
+Permite convertir una red Δ en una Y (o viceversa) para facilitar el cálculo de resistencias equivalentes
+y el análisis de circuitos más complejos.
+</p>
+    </section>
+
+
+    <!-- ===================================================== -->
+    <!-- ================ 1. LEY DE OHM ======================= -->
+    <!-- ===================================================== -->
+    <section class="card" id="ohm-card" aria-labelledby="ohm-title">
+        <h2 id="ohm-title">Ley de Ohm</h2>
+
+        <div class="row">
+            <label>Voltaje (V)</label>
+            <input type="number" id="ohm-volt" step="any" placeholder="Ej: 12">
+        </div>
+
+        <div class="row">
+            <label>Corriente (A)</label>
+            <input type="number" id="ohm-current" step="any" placeholder="Ej: 2">
+        </div>
+
+        <div class="row">
+            <label>Resistencia (Ω)</label>
+            <input type="number" id="ohm-res" step="any" placeholder="Ej: 6">
+        </div>
+
+        <div class="actions">
+            <button id="ohm-calc-vi">Calcular I ( V / R)</button>
+            <button id="ohm-calc-vr">Calcular V ( I · R)</button>
+            <button id="ohm-calc-rv">Calcular R ( V / I)</button>
+            <button id="ohm-calc-p">Calcular P ( V · I)</button>
+        </div>
+
+        <div class="results">
+            <div class="result-block"><strong>Corriente (I):</strong> <span id="ohm-out-i">—</span></div>
+            <div class="result-block"><strong>Voltaje (V):</strong> <span id="ohm-out-v">—</span></div>
+            <div class="result-block"><strong>Resistencia (R):</strong> <span id="ohm-out-r">—</span></div>
+            <div class="result-block"><strong>Potencia (P):</strong> <span id="ohm-out-p">—</span></div>
+        </div>
+    </section>
+
+
+    <!-- ===================================================== -->
+    <!-- ============== 2. COLORES DE RESISTENCIA ============ -->
+    <!-- ===================================================== -->
+    <section class="card" id="colors-card" aria-labelledby="colors-title">
+        <h2 id="colors-title">Calculadora Código de Colores</h2>
+
+        <div class="color-visual"></div>
+
+        <!-- BANDA 1 -->
+        <div class="row">
+            <label>1ª Banda</label>
+            <select id="col-b1">
+                <option value="" disabled selected>Selecciona</option>
+                <option value="0" data-color="#000000">Negro</option>
+                <option value="1" data-color="#804000">Café</option>
+                <option value="2" data-color="#FF0000">Rojo</option>
+                <option value="3" data-color="#FFA500">Naranja</option>
+                <option value="4" data-color="#FFFF00">Amarillo</option>
+                <option value="5" data-color="#00FF00">Verde</option>
+                <option value="6" data-color="#0000FF">Azul</option>
+                <option value="7" data-color="#800080">Violeta</option>
+                <option value="8" data-color="#808080">Gris</option>
+                <option value="9" data-color="#FFFFFF">Blanco</option>
+            </select>
+        </div>
+
+        <!-- BANDA 2 -->
+        <div class="row">
+            <label>2ª Banda</label>
+            <select id="col-b2">
+                <option value="" disabled selected>Selecciona</option>
+                <option value="0" data-color="#000000">Negro</option>
+                <option value="1" data-color="#804000">Café</option>
+                <option value="2" data-color="#FF0000">Rojo</option>
+                <option value="3" data-color="#FFA500">Naranja</option>
+                <option value="4" data-color="#FFFF00">Amarillo</option>
+                <option value="5" data-color="#00FF00">Verde</option>
+                <option value="6" data-color="#0000FF">Azul</option>
+                <option value="7" data-color="#800080">Violeta</option>
+                <option value="8" data-color="#808080">Gris</option>
+                <option value="9" data-color="#FFFFFF">Blanco</option>
+            </select>
+        </div>
+
+        <!-- BANDA 3 → MULTIPLICADOR (aquí te fallaba) -->
+        <div class="row">
+            <label>Multiplicador</label>
+            <select id="col-b3">
+                <option value="" disabled selected>Selecciona</option>
+                <option value="1" data-color="#000000">×1 (Negro)</option>
+                <option value="10" data-color="#804000">×10 (Café)</option>
+                <option value="100" data-color="#FF0000">×100 (Rojo)</option>
+                <option value="1000" data-color="#FFA500">×1k (Naranja)</option>
+                <option value="10000" data-color="#FFFF00">×10k (Amarillo)</option>
+                <option value="100000" data-color="#00FF00">×100k (Verde)</option>
+                <option value="1000000" data-color="#0000FF">×1M (Azul)</option>
+                <option value="10000000" data-color="#800080">×10M (Violeta)</option>
+                <option value="0.1" data-color="#808080">×0.1 (Gris)</option>
+                <option value="0.01" data-color="#FFFFFF">×0.01 (Blanco)</option>
+                <option value="0.1" data-color="#FFD700">×0.1 (Oro)</option>
+                <option value="0.01" data-color="#C0C0C0">×0.01 (Plata)</option>
+            </select>
+        </div>
+
+        <!-- BANDA 4 → TOLERANCIA -->
+        <div class="row">
+            <label>Tolerancia</label>
+            <select id="col-b4">
+                <option value="±1%" data-color="#804000">Café ±1%</option>
+                <option value="±2%" data-color="#FF0000">Rojo ±2%</option>
+                <option value="±5%" data-color="#FFD700">Oro ±5%</option>
+                <option value="±10%" data-color="#C0C0C0">Plata ±10%</option>
+            </select>
+        </div>
+
+        <div class="actions">
+            <button id="col-calc">Calcular valor</button>
+            <button id="col-draw">Dibujar resistencia</button>
+        </div>
+
+        <div class="results">
+            <div class="result-block">
+                <strong>Valor:</strong> <span id="col-result">—</span>
+            </div>
+            <canvas id="col-canvas" width="420" height="90"></canvas>
+        </div>
+    </section>
+
+
+<!-- ===================================================== -->
+<!-- ================== 3. Δ ↔ Y ========================== -->
+<!-- ===================================================== -->
+<section class="card" id="star-delta-card">
+    <h2>Transformación Estrella ↔ Delta</h2>
+
+    <div class="subgrid">
+
+        <!-- --------- Caja 1: DELTA → ESTRELLA --------- -->
+        <div class="sd-box">
+
+            <div class="sd-img-box">
+                <img src="tu_imagen.png" class="sd-img" alt="Diagrama Delta a Y">
+            </div>
+
+            <h4>Δ → Y (ingresa <strong>R<sub>AB</sub></strong>, <strong>R<sub>BC</sub></strong>, <strong>R<sub>AC</sub></strong>)</h4>
+
+            <label>R<sub>AB</sub></label>
+            <input id="sd_rab" type="number" step="any">
+
+            <label>R<sub>BC</sub></label>
+            <input id="sd_rbc" type="number" step="any">
+
+            <label>R<sub>AC</sub></label>
+            <input id="sd_rac" type="number" step="any">
+
+            <button id="sd-d2y">Convertir Δ → Y</button>
+
+            <div class="result-block">
+                <strong>Ra:</strong> <span id="sd_ra">—</span><br>
+                <strong>Rb:</strong> <span id="sd_rb">—</span><br>
+                <strong>Rc:</strong> <span id="sd_rc">—</span>
+            </div>
+        </div>
+
+        <!-- --------- Caja 2: ESTRELLA → DELTA --------- -->
+        <div class="sd-box">
+
+            <h4>Y → Δ (ingresa Ra, Rb, Rc)</h4>
+
+            <label>Ra</label>
+            <input id="sd_ra_in" type="number" step="any">
+
+            <label>Rb</label>
+            <input id="sd_rb_in" type="number" step="any">
+
+            <label>Rc</label>
+            <input id="sd_rc_in" type="number" step="any">
+
+            <button id="sd-y2d">Convertir Y → Δ</button>
+
+            <div class="result-block">
+                <strong>R<sub>AB</sub>:</strong> <span id="sd_rab_out">—</span><br>
+                <strong>R<sub>BC</sub>:</strong> <span id="sd_rbc_out">—</span><br>
+                <strong>R<sub>AC</sub>:</strong> <span id="sd_rac_out">—</span>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+</main>
+
+<footer class="site-footer">
+    <small>Herramienta creada para uso académico.</small>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
