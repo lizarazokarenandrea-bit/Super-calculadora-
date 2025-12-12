@@ -75,7 +75,7 @@ function drawResistorFromSelects() {
   ctx.moveTo(380,45); ctx.lineTo(460,45); ctx.stroke();
 
   const bands = [c1,c2,c3,c4];
-  const positions = [90, 170, 250, 330];
+  const positions = [90, 170, 250, 340];
   for (let i=0;i<4;i++){
     ctx.fillStyle = bands[i];
     ctx.fillRect(positions[i], 20, 20, 50);
